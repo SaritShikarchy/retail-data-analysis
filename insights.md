@@ -1,6 +1,12 @@
 
 ## Revenue by Country Analysis
 
+Query:
+SELECT Country, SUM(Revenue) AS total_revenue
+FROM RETAIL_DB.PUBLIC.SALES
+GROUP BY Country
+ORDER BY total_revenue DESC;
+
 Insight:
 Revenue is highly concentrated in the United Kingdom, generating approximately 7.3M while all other countries generate less than 300K.
 
@@ -11,6 +17,12 @@ This indicates a strong dependency on a single market and highlights a potential
 
 ## Revenue by Month Analysis
 
+Query:
+SELECT Year, Month, SUM(Revenue) AS total_revenue
+FROM RETAIL_DB.PUBLIC.SALES
+GROUP BY Year, Month
+ORDER BY Year, Month;
+
 Insight:
 Revenue shows fluctuations over time, with certain months generating higher sales compared to others, indicating seasonality in customer purchasing behavior.
 
@@ -20,6 +32,13 @@ Sales are not evenly distributed throughout the year, suggesting that demand is 
 ---
 
 ## Top Products Analysis
+
+Query:
+SELECT Description, SUM(Quantity) AS total_quantity
+FROM RETAIL_DB.PUBLIC.SALES
+GROUP BY Description
+ORDER BY total_quantity DESC
+LIMIT 10;
 
 Insight:
 AA few products generate most of the sales volume, with the top product exceeding 80K units sold.
